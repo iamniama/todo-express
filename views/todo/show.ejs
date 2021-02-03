@@ -1,0 +1,10 @@
+<ul class="list-group">
+    <%data.forEach(function(item, index){ %>
+        <li class="list-group-item" style="color:<%=item.cat_color%>"> <%=item.task_name %>  <a href="/tasks/edit/<%= index %>">Edit</a>
+            <form method="POST" action="/tasks/<%= index %>/?_method=DELETE">
+                <input type="submit" value="Delete" class="btn btn-primary">
+                </form>
+        </li>
+
+   <% }) %>
+</ul>
