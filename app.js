@@ -58,6 +58,13 @@ app.post("/tasks", (req,res)=>{
     res.redirect("/")
 })
 
+app.delete("/tasks/:idx", (req,res)=>{
+    let tasks = getFile("./tasks.json")
+    tasks[req.params.idx].done = 1
+    writeFile("./tasks.json", tasks)
+    res.redirect("/")
+})
+
 
 
 app.listen(port)
