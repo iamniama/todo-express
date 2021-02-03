@@ -25,29 +25,37 @@ const writeFile = (fileName, fileData)=> {
 app.get("/", (req,res)=>{
     let tasks = getFile("./tasks.json")
     tasks = tasks.filter(function(task) {
-        return task.done === false
+        return parseInt(task.done) == 0 //return task.done === false || task.done == "false"
     })
     res.render("todo/show", {data: tasks})
 })
 
 app.get("/categories", (req,res)=>{
-    let cats = getFile("./categories.json")
-    res.render("todo/show_cat", {data: cats})
+    res.render("todo/show_cat", {data: getFile("./categories.json")})
 })
 
 app.get("/tasks/done", (req,res)=>{
-    let cats = getFile("./categories.json")
+    //let cats = getFile("./categories.json")
     let tasks = getFile("./tasks.json")
     tasks = tasks.filter(function(task) {
-        return task.done === true
+        return parseInt(task.done) == 1  // task.done === true|| task.done == "true"
     })
     res.render("todo/show", {data: tasks})
 
 })
 
-app.get("/tasks/new", (req,res)=>{
-    let cats = getFile("./categories.json")
-    res.render("todo/add")
+app.get("/tasks/new", (req,res)=>{ 
+    res.render("todo/add", {tsk_cats: getFile("./categories.json")})
+})
+
+app.post("/tasks", (req,res)=>{
+    let tasks = getFile("./tasks.json")
+    console.log(req.body)
+    console.log("+++++++++++++++++++++++++")
+
+    tasks.push(req.body)
+    writeFile("./tasks.json", tasks)
+    res.redirect("/")
 })
 
 

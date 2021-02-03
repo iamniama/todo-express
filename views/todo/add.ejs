@@ -1,0 +1,17 @@
+<form method="POST" action="/tasks">
+    <label for="taskName" class="card-text text-muted">Task</label>
+    <input id="taskName" type="text" name="task_name" class="form-control">
+    <br />
+    <label for="taskPriority" class="card-text text-muted">Priority</label>
+    <input id="taskPriority" type="text" name="task_priority" class="form-control">
+    <br />
+    <input type="hidden" name="done" value="0">
+    <label for="taskCategory" class="card-text text-muted">Category</label>
+    <select id="taskCategory" type="text" name="cat_color" class="form-control">
+        <% tsk_cats.forEach(function(cat, index){ %>
+            <option value="<%=cat.category_color%>"><%=cat.category_name %></option>
+       <% })%>
+    </select>
+    <br />
+    <input type="submit" class="btn btn-primary">
+  </form>
