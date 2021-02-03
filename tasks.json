@@ -1,4 +1,5 @@
 [
     {"task_name": "Create Express ToDo", "task_priority": 1, "done": false, "cat_color": "green"},
-    {"task_name": "Push Express Todo to GitHub", "task_priority": 2, "done": false, "cat_color": "blue"}
+    {"task_name": "Push Express Todo to GitHub", "task_priority": 2, "done": false, "cat_color": "blue"},
+    {"task_name": "Do Day 2 Homework", "task_priority": 2, "done": true, "cat_color": "green"}
 ]
